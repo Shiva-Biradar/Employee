@@ -30,7 +30,7 @@ public class EmpController {
 
   salary.forEach((dept,emp1)->{
 
-      System.out.println(dept);
+      //System.out.println(dept);
       System.out.println(emp1.get().getSalary());
 
           });
