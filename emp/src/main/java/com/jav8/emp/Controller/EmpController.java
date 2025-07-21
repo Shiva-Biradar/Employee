@@ -2,6 +2,7 @@ package com.jav8.emp.Controller;
 
 import com.jav8.emp.Model.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public class EmpController {
 
     @GetMapping("getEmp")
     public void getEmp() {
+        System.out.println("tes");
         List<Employee> emp = Arrays.asList(
                 new Employee("Shiva", "IT", 35, "Male", 120000),
                 new Employee("Sanchu", "HR", 34, "Male", 190000),
@@ -24,18 +26,17 @@ public class EmpController {
 
         );
 
+        Map<String, Optional<Employee>> salary = emp.stream().collect(Collectors.groupingBy(Employee::getDepartment,
+                Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))));
 
+        salary.forEach((dept, emp1) -> {
 
-  Map<String,Optional<Employee>> salary=emp.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))));
+            System.out.println(dept);
+            System.out.println(emp1.get().getSalary());
 
-  salary.forEach((dept,emp1)->{
+        });
 
-      //System.out.println(dept);
-      System.out.println(emp1.get().getSalary());
-
-          });
-
-        //System.out.print(salary);
+        // System.out.print(salary);
 
     }
 }
