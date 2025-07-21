@@ -17,7 +17,7 @@ public class EmpController {
 
     @GetMapping("getEmp")
     public void getEmp() {
-        System.out.println("tes");
+        System.out.println("test Controller");
         List<Employee> emp = Arrays.asList(
                 new Employee("Shiva", "IT", 35, "Male", 120000),
                 new Employee("Sanchu", "HR", 34, "Male", 190000),
